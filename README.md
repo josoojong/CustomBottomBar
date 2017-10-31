@@ -1,3 +1,5 @@
 # CustomBottomBar
+
 CustomBottomBar tab - icon + text
-ViewPager swipe version, swipe disalbe version
+
+ViewPager - swipe version, swipe disalbe version
