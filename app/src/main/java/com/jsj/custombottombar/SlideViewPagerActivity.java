@@ -11,32 +11,30 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 
 /**
  * Created by josoojong on 2017. 10. 31..
  */
 
-public class SlideViewPagerActivity extends AppCompatActivity{
+public class SlideViewPagerActivity extends AppCompatActivity {
 
-    @BindView(R.id.slide_pager)
     ViewPager pager;
-    @BindView(R.id.tl_bottombar)
     TabLayout tabLayout;
 
     TabPagerAdapter mTabPagerAdapter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_slide);
-        ButterKnife.bind(this);
 
         init();
     }
 
     void init() {
+        pager = (ViewPager) findViewById(R.id.slide_pager);
+        tabLayout = (TabLayout) findViewById(R.id.tl_bottombar);
+
         tabLayout.setSelectedTabIndicatorHeight(0);
         mTabPagerAdapter = new TabPagerAdapter(getSupportFragmentManager(), this);
         pager.setAdapter(mTabPagerAdapter);
@@ -52,8 +50,8 @@ public class SlideViewPagerActivity extends AppCompatActivity{
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                ImageView icon = (ImageView)tab.getCustomView().findViewById(R.id.icon);
-                TextView title = (TextView)tab.getCustomView().findViewById(R.id.title);
+                ImageView icon = (ImageView) tab.getCustomView().findViewById(R.id.icon);
+                TextView title = (TextView) tab.getCustomView().findViewById(R.id.title);
                 icon.setColorFilter(Color.RED);
                 title.setTextColor(Color.RED);
                 icon.startAnimation(bounce);
@@ -61,8 +59,8 @@ public class SlideViewPagerActivity extends AppCompatActivity{
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                ImageView icon = (ImageView)tab.getCustomView().findViewById(R.id.icon);
-                TextView title = (TextView)tab.getCustomView().findViewById(R.id.title);
+                ImageView icon = (ImageView) tab.getCustomView().findViewById(R.id.icon);
+                TextView title = (TextView) tab.getCustomView().findViewById(R.id.title);
                 icon.setColorFilter(Color.GRAY);
                 title.setTextColor(Color.GRAY);
                 icon.clearAnimation();
@@ -70,7 +68,7 @@ public class SlideViewPagerActivity extends AppCompatActivity{
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                ImageView icon = (ImageView)tab.getCustomView().findViewById(R.id.icon);
+                ImageView icon = (ImageView) tab.getCustomView().findViewById(R.id.icon);
                 icon.clearAnimation();
                 icon.startAnimation(bounce);
             }

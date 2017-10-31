@@ -11,9 +11,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 
 /**
  * Created by josoojong on 2017. 10. 31..
@@ -21,9 +18,7 @@ import butterknife.ButterKnife;
 
 public class FixViewPagerActivity extends AppCompatActivity{
 
-    @BindView(R.id.fix_pager)
     ViewPager pager;
-    @BindView(R.id.tl_bottombar)
     TabLayout tabLayout;
 
     TabPagerAdapter mTabPagerAdapter;
@@ -31,12 +26,14 @@ public class FixViewPagerActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fix);
-        ButterKnife.bind(this);
 
         init();
     }
 
     void init() {
+        pager = (ViewPager) findViewById(R.id.fix_pager);
+        tabLayout = (TabLayout) findViewById(R.id.tl_bottombar);
+
         tabLayout.setSelectedTabIndicatorHeight(0);
         mTabPagerAdapter = new TabPagerAdapter(getSupportFragmentManager(), this);
         pager.setAdapter(mTabPagerAdapter);

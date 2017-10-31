@@ -3,26 +3,38 @@ package com.jsj.custombottombar;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
+
+    Button btnSlide, btnFix;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+
+        init();
     }
 
-    @OnClick(R.id.btn_slide)
-    public void showSlideViewPager() {
-        startActivity(new Intent(MainActivity.this, SlideViewPagerActivity.class));
-    }
+    void init() {
+        btnSlide = (Button)findViewById(R.id.btn_slide);
+        btnFix = (Button) findViewById(R.id.btn_fix);
 
-    @OnClick(R.id.btn_fix)
-    public void showFixViewPager() {
-        startActivity(new Intent(MainActivity.this, FixViewPagerActivity.class));
+        btnSlide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SlideViewPagerActivity.class));
+            }
+        });
+
+        btnFix.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, FixViewPagerActivity.class));
+            }
+        });
     }
 }

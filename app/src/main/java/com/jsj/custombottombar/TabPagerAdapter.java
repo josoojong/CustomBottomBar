@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 
 /**
  * Created by josujong on 2017. 10. 31..
@@ -40,7 +39,7 @@ public class TabPagerAdapter extends FragmentPagerAdapter {
         view = LayoutInflater.from(mContext).inflate(R.layout.itemtab, null);
 
         ImageView tabIcon = (ImageView)view.findViewById(R.id.icon);
-        Glide.with(mContext).load(mIcon[position]).into(tabIcon);
+        tabIcon.setImageResource(mIcon[position]);
 
         TextView tabTitle = (TextView)view.findViewById(R.id.title);
         tabTitle.setText(mTitle[position]);
